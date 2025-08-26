@@ -1,140 +1,131 @@
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Letter</title>
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(120deg, #a0d8ff, #cce6ff);
-      padding: 20px;
-      line-height: 1.8;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    .intro, .letter {
-      max-width: 600px;
-      margin: 80px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s forwards;
-    }
-    .letter {
-      display: none;
-    }
-    h1 {
-      color: #004080;
-      font-size: 28px;
-    }
-    p {
-      font-size: 18px;
-      color: #333;
-    }
-    button {
-      background: #3399ff;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #0073e6;
-      transform: scale(1.05);
-    }
+<meta charset="UTF-8">
+<title>Letter for Aki 💌</title>
+<style>
+  body {
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #cce6ff, #ffe6f2);
+    overflow: hidden;
+    text-align: center;
+  }
+  .intro, .letter {
+    max-width: 600px;
+    margin: 100px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  .letter {
+    display: none;
+  }
+  h1 {
+    color: #004080;
+    font-size: 28px;
+  }
+  p {
+    font-size: 18px;
+    color: #333;
+  }
+  button {
+    background: #ff6699;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+  }
+  button:hover {
+    transform: scale(1.05);
+  }
 
-    /* Fade-in animation */
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  /* fade in animation */
+  @keyframes fadeIn {
+    to {opacity:1;}
+  }
 
-    /* Typing effect */
-    .typing {
-      display: inline-block;
-      border-right: 3px solid #004080;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 3s steps(20), blink 0.6s step-end infinite alternate;
-    }
+  /* hearts & kisses */
+  .emoji {
+    position: fixed;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes floatUp {
+    0% {transform: translateY(0) scale(1); opacity:1;}
+    100% {transform: translateY(-600px) scale(1.5); opacity:0;}
+  }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-
-    /* Heart floating animation */
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 24px;
-      animation: floatUp 5s linear infinite;
-      color: #ff4da6;
-      opacity: 0.7;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
-    }
-  </style>
+  /* envelope emoji */
+  .envelope {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+  }
+</style>
 </head>
 <body>
-  <div class="intro">
-    <h1 class="typing">Hi Aki 💙</h1>
-    <p>I made something special for you... pero click mo muna itong button 😉</p>
-    <button onclick="showLetter()">Open My Letter</button>
-  </div>
 
-  <div class="letter">
-    <h1>My Letter for Aki</h1>
-    <p>
-      hi aki, i just want to say thankyou for everything, you mean a lot to me 
-      and i appreciate having you in my life. im sorry sa pagiging pasaway ko minsan 
-      and minsan nasasaktan kita, but i hope you know that i love you so much. 
-      i love you aki and i miss you so much. please take care of yourself always. 
-      i wish i can kiss and hug you rn 🙁
-    </p>
-    <p>Sincerely,<br><b>Ikang 💙</b></p>
-  </div>
+<!-- Intro screen -->
+<div class="intro" id="intro">
+  <div class="envelope">✉️</div>
+  <h1>I love you so much, Aki 💖</h1>
+  <button onclick="openLetter()">Open Envelope</button>
+</div>
 
-  <audio id="bgmusic" loop>
-    <source src="blue.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<!-- Letter content -->
+<div class="letter" id="letter">
+  <h1>My Letter for Aki</h1>
+  <p>
+    hi aki, i just want to say thankyou for everything, you mean a lot to me 
+    and i appreciate having you in my life, im sorry sa pagiging pasaway ko minsan 
+    and minsan nasasaktan kita, but i hope you know that i love you so much. 
+    i love you aki and i miss you so much, please take care of yourself always, 
+    i wish i can kiss and hug you rn 🙁
+  </p>
+  <p>Sincerely,<br><b>Ikang 💙</b></p>
+</div>
 
-  <script>
-    function showLetter() {
-      document.querySelector('.intro').style.display = 'none';
-      document.querySelector('.letter').style.display = 'block';
-      document.getElementById('bgmusic').play();
-      startHearts();
-    }
+<!-- Background music -->
+<audio id="bgmusic" loop>
+  <source src="sounds/blue.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-    function startHearts() {
-      setInterval(() => {
-        let heart = document.createElement("div");
-        heart.innerHTML = "💙";
-        heart.classList.add("heart");
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        document.body.appendChild(heart);
+<script>
+function openLetter() {
+  document.getElementById('intro').style.display = 'none';
+  document.getElementById('letter').style.display = 'block';
+  document.getElementById('bgmusic').play();
+  startEmojis();
+}
 
-        setTimeout(() => {
-          heart.remove();
-        }, 5000);
-      }, 800);
-    }
-  </script>
+function startEmojis() {
+  setInterval(() => {
+    let emoji = document.createElement('div');
+    emoji.classList.add('emoji');
+    emoji.innerHTML = Math.random() > 0.5 ? "💙" : "💋";
+    emoji.style.left = Math.random() * window.innerWidth + "px";
+    emoji.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 6000);
+  }, 500);
+}
+</script>
+
 </body>
 </html>
