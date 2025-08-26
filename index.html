@@ -1,49 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Letter</title>
+  <title>For Aki 💌</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background: #ffe6f2;
-      padding: 20px;
-      line-height: 1.8;
+      background: #001f3f;
+      overflow: hidden;
+    }
+    .intro, .letter {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+    }
+    .intro {
+      background: #003366;
       text-align: center;
+    }
+    .intro h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .intro button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #3399ff;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .intro button:hover {
+      background: #1a75ff;
     }
     .letter {
+      display: none;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      padding: 30px;
+      border-radius: 20px;
       max-width: 600px;
       margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: left;
+      line-height: 1.8;
+      z-index: 2;
     }
     h1 {
-      color: #e60073;
+      color: #003366;
       text-align: center;
     }
-    p {
-      font-size: 18px;
-      color: #333;
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #66b3ff;
+      font-size: 20px;
+      animation: float 6s infinite;
+      opacity: 0.7;
     }
-    audio {
-      margin: 20px 0;
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); opacity: 0.7; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <!-- Music Player -->
-  <audio autoplay loop controls>
-    <source src="https://drive.google.com/uc?export=download&id=1z7MJlPiUgHFcJJrimlCAvTERujcX4LZy" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Intro screen -->
+  <div class="intro" id="intro">
+    <h1>Hi Aki 💙</h1>
+    <p>I made something special for you...</p>
+    <button onclick="openLetter()">Open My Letter 💌</button>
+  </div>
 
-  <!-- Letter -->
-  <div class="letter">
+  <!-- Letter content -->
+  <div class="letter" id="letter">
     <h1>My Letter for Aki</h1>
-    <p>hi aki, i just want to say thankyou for everything, you mean a lot to me and i appreciate having you in my life, im sorry sa pagiging pasaway ko minsan and minsan nasasaktan kita, but i hope you know that i love you so much, i love you aki and i miss you so much, please take care of yourself always, i wish i can kiss and hug you rn 🙁</p>
+    <p>hi aki, i just want to say thank you for everything, you mean a lot to me and i appreciate having you in my life. I'm sorry sa pagiging pasaway ko minsan and minsan nasasaktan kita, but I hope you know that I love you so much. I love you aki and I miss you so much. Please take care of yourself always, I wish I can kiss and hug you rn 🙁</p>
     <p>Sincerely,<br>Ikang</p>
   </div>
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop>
+    <source src="https://drive.google.com/uc?export=download&id=1z7MJlPiUgHFcJJrimlCAvTERujcX4LZy" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function openLetter() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('letter').style.display = 'block';
+      document.getElementById('bgMusic').play();
+
+      // create floating hearts
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💙";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }, 500);
+    }
+  </script>
 </body>
 </html>
