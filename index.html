@@ -1,82 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Letter for Aki</title>
+  <title>My Letter</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-    }
-    /* Intro screen */
-    .intro {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9ec4, #ffe6f2);
+      background: #ffe6f2;
+      padding: 20px;
+      line-height: 1.8;
       text-align: center;
     }
-    .intro h1 {
-      color: #e60073;
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    .intro button {
-      padding: 12px 24px;
-      font-size: 18px;
-      background: #e60073;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .intro button:hover {
-      background: #ff3385;
-    }
-    /* Letter screen */
     .letter {
-      display: none;
       max-width: 600px;
-      margin: 40px auto;
+      margin: auto;
       background: white;
       padding: 25px;
       border-radius: 20px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      line-height: 1.8;
     }
-    .letter h1 {
+    h1 {
       color: #e60073;
       text-align: center;
     }
-    .letter p {
+    p {
       font-size: 18px;
       color: #333;
+    }
+    audio {
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
-  <!-- Intro screen -->
-  <div class="intro" id="intro">
-    <h1>Hi Aki 💕</h1>
-    <p>I have something special for you...</p>
-    <button onclick="showLetter()">Open the Letter ✨</button>
-  </div>
+  <!-- Music Player -->
+  <audio autoplay loop controls>
+    <source src="https://drive.google.com/uc?export=download&id=1z7MJlPiUgHFcJJrimlCAvTERujcX4LZy" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-  <!-- Letter screen -->
-  <div class="letter" id="letter">
+  <!-- Letter -->
+  <div class="letter">
     <h1>My Letter for Aki</h1>
-    <p>Hi Aki, I just want to say thank you for everything. You mean a lot to me and I appreciate having you in my life. I'm sorry sa pagiging pasaway ko minsan and minsan nasasaktan kita, but I hope you know that I love you so much. I love you Aki and I miss you so much. Please take care of yourself always, I wish I can kiss and hug you right now 🙁</p>
+    <p>hi aki, i just want to say thankyou for everything, you mean a lot to me and i appreciate having you in my life, im sorry sa pagiging pasaway ko minsan and minsan nasasaktan kita, but i hope you know that i love you so much, i love you aki and i miss you so much, please take care of yourself always, i wish i can kiss and hug you rn 🙁</p>
     <p>Sincerely,<br>Ikang</p>
   </div>
-
-  <script>
-    function showLetter() {
-      document.getElementById("intro").style.display = "none";
-      document.getElementById("letter").style.display = "block";
-    }
-  </script>
 </body>
 </html>
