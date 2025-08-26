@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,9 +9,10 @@
     padding:0;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #cce6ff, #ffe6f2);
-    overflow: hidden;
+    overflow-x: hidden;
     text-align: center;
   }
+
   .intro, .letter {
     max-width: 600px;
     margin: 100px auto;
@@ -22,17 +23,11 @@
     opacity: 0;
     animation: fadeIn 1s forwards;
   }
-  .letter {
-    display: none;
-  }
-  h1 {
-    color: #004080;
-    font-size: 28px;
-  }
-  p {
-    font-size: 18px;
-    color: #333;
-  }
+  .letter { display: none; }
+
+  h1 { color: #004080; font-size: 28px; }
+  p { font-size: 18px; color: #333; }
+
   button {
     background: #ff6699;
     color: white;
@@ -44,14 +39,10 @@
     margin-top: 15px;
     transition: 0.3s;
   }
-  button:hover {
-    transform: scale(1.05);
-  }
+  button:hover { transform: scale(1.05); }
 
   /* fade in animation */
-  @keyframes fadeIn {
-    to {opacity:1;}
-  }
+  @keyframes fadeIn { to {opacity:1;} }
 
   /* hearts & kisses */
   .emoji {
@@ -65,7 +56,7 @@
     100% {transform: translateY(-600px) scale(1.5); opacity:0;}
   }
 
-  /* envelope emoji */
+  /* envelope animation */
   .envelope {
     font-size: 80px;
     margin-bottom: 20px;
@@ -76,6 +67,18 @@
     50% {transform: scale(1.1);}
     100% {transform: scale(1);}
   }
+
+  /* typing effect for intro text */
+  .typing {
+    display: inline-block;
+    border-right: 3px solid #004080;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(20), blink 0.6s step-end infinite alternate;
+  }
+  @keyframes typing { from {width:0;} to {width:100%;} }
+  @keyframes blink { 50% {border-color: transparent;} }
+
 </style>
 </head>
 <body>
@@ -83,7 +86,7 @@
 <!-- Intro screen -->
 <div class="intro" id="intro">
   <div class="envelope">✉️</div>
-  <h1>I love you so much, Aki 💖</h1>
+  <h1 class="typing">I love you so much, Aki 💖</h1>
   <button onclick="openLetter()">Open Envelope</button>
 </div>
 
@@ -106,14 +109,21 @@
   Your browser does not support the audio element.
 </audio>
 
+<!-- Optional big visible music icon -->
+<div id="musicBtn" style="font-size:50px; cursor:pointer; margin-top:20px; display:none;">🎵💙</div>
+
 <script>
 function openLetter() {
   document.getElementById('intro').style.display = 'none';
   document.getElementById('letter').style.display = 'block';
-  document.getElementById('bgmusic').play();
+  const music = document.getElementById('bgmusic');
+  music.volume = 1.0;
+  music.play();
+  document.getElementById('musicBtn').style.display = 'block';
   startEmojis();
 }
 
+// Floating hearts & kisses
 function startEmojis() {
   setInterval(() => {
     let emoji = document.createElement('div');
@@ -125,7 +135,15 @@ function startEmojis() {
     setTimeout(() => emoji.remove(), 6000);
   }, 500);
 }
+
+// Optional play/pause button
+const musicBtn = document.getElementById('musicBtn');
+musicBtn.addEventListener('click', () => {
+  const music = document.getElementById('bgmusic');
+  if(music.paused){ music.play(); musicBtn.style.opacity = 0.5; }
+  else { music.pause(); musicBtn.style.opacity = 1; }
+});
 </script>
 
 </body>
-</html>
+</html>    
